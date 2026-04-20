@@ -85,10 +85,20 @@ JDN-tags: []
 
 ---
 
-## 相關資源
+## 規格對齊（JDN LLM Wiki v1.0）
 
-- [JDN LLM Wiki 規格（英文）](https://github.com/FW1201/jdn-llm-wiki)
-- 本 Repo 是 JDN LLM Wiki 規格的官方 Skills 實作
+| Skill | 對應規格章節 |
+|-------|------------|
+| `jdn-kb-intake` | §5.1 `/wiki ingest` workflow |
+| `jdn-kb-query` | §5.2 `/wiki query` workflow |
+| `jdn-kb-organize` | §5.3 `/wiki lint` + §5.4 `/wiki status` |
+| `jdn-kb-management` | §5.4 `/wiki status` + §10 Agent Replication Checklist |
+| JDN- frontmatter | §4.1 Frontmatter Specification |
+| log.md 格式 | `## [YYYY-MM-DD] {op} \| {desc}` |
+
+規格來源：[FW1201/jdn-llm-wiki](https://github.com/FW1201/jdn-llm-wiki)
+
+> Skills augment the wiki system — they provide role-specific workflows that PRODUCE content that then gets ingested into the wiki. *(Appendix B)*
 
 ---
 

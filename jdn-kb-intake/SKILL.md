@@ -39,6 +39,15 @@ version: 1.0.0
 3. 判斷所屬角色，對應 `JDN-role`
 4. 提取核心概念、重點、引用、數據
 
+### Phase 2b：決策邏輯（新建 vs 更新）
+
+| 條件 | 動作 |
+|------|------|
+| 新素材，無相關頁面 | 新建頁面 |
+| 新素材，有密切相關頁面 | 更新現有頁面，補記新素材來源 |
+| 重複素材（已入庫） | 記錄日期，內容未變則跳過 |
+| 素材跨多個無關主題 | 拆分為 2+ 頁面 |
+
 ### Phase 3：生成 Wiki 頁面
 
 **頁面路徑**：`wiki/{角色目錄}/{kebab-case-title}.md`
@@ -102,9 +111,9 @@ JDN-tags: []              # 自由標籤（Obsidian 搜尋用）
 **更新 wiki/index.md**：
 在對應角色分類下，加入新頁面條目（格式：`- [標題](路徑) — 一行說明`）
 
-**追加 wiki/log.md**：
-```
-YYYY-MM-DD HH:MM | intake | {n} 頁面 | 素材：{raw 路徑} → {wiki 路徑}
+**追加 wiki/log.md**（對齊 JDN_llm_wiki.md §5.1 格式）：
+```markdown
+## [YYYY-MM-DD] ingest | {素材檔名} | {n} pages created/updated
 ```
 
 ---

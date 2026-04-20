@@ -25,24 +25,32 @@ version: 1.0.0
 
 ### Phase 2：綜合回答
 
+**頁面優先順序**（對齊 JDN_llm_wiki.md §5.2）：
+> synthesis > source-summary > entity > concept
+
 根據頁面內容撰寫回答：
 
 ```
 📚 來源：
-  - wiki/{路徑} — {JDN-title}（{JDN-updated}）
+  - [頁面標題](wiki/{路徑}) — {JDN-updated}
   - ...
 
 回答：
-[綜合多頁面的答案]
+[綜合多頁面的答案，用 [標題](路徑) 格式標明引用]
 
-⚠ 限制：
-[若資訊不完整或有矛盾，說明]
+⚠ 缺口：
+[若 wiki 沒有覆蓋此問題，說明：「This isn't covered yet — consider ingesting X」]
 ```
 
 **回答原則**：
 - 綜合多頁面時要說明哪部分來自哪個頁面
 - 若多頁面有矛盾，明確指出而非靜默選一個
-- 若 wiki 中沒有相關資訊，直接說「wiki 中尚無此內容」，不要自行推測
+- 若 wiki 中沒有相關資訊，直接說明並建議入庫，不要自行推測
+
+**輸出格式選項**（對齊 §5.2）：
+- 預設：Markdown 答案 + 引用連結
+- `--marp`：Marp 簡報格式（適合 presentation）
+- `--apa`：APA 7th 格式參考清單
 
 ### Phase 3：提議存回（可選）
 

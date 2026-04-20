@@ -93,8 +93,8 @@ Index 不同步（{n} 頁）：
 
 ### Phase 4：更新日誌
 
-```
-YYYY-MM-DD HH:MM | organize | 修復 {n} 項問題 | frontmatter:{a} 孤立:{b} 連結:{c} index:{d}
+```markdown
+## [YYYY-MM-DD] organize | 修復 {n} 項問題 | frontmatter:{a} orphan:{b} links:{c} index:{d}
 ```
 
 ---
