@@ -10,7 +10,7 @@ echo "安裝目標：$SKILLS_DIR"
 
 mkdir -p "$SKILLS_DIR"
 
-for skill in jdn-kb-intake jdn-kb-organize jdn-kb-query jdn-kb-management; do
+for skill in jdn-kb-intake jdn-kb-organize jdn-kb-query jdn-kb-management jdn-kb-view; do
   if [ -d "$REPO_DIR/$skill" ]; then
     echo "  安裝 $skill..."
     rm -rf "$SKILLS_DIR/$skill"
@@ -25,3 +25,4 @@ echo "  /wiki ingest   → 知識入庫"
 echo "  /wiki lint     → 知識庫診斷"
 echo "  /wiki query    → 查詢知識庫"
 echo "  /wiki status   → 系統狀態報告"
+echo "  /wiki query … --as ste|diagram|html|video|auto → 理解格式層"

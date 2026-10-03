@@ -6,7 +6,8 @@ description: >
   「關於 X 我記錄了什麼」「查一下 wiki」「/wiki query」時觸發。
   讀取 wiki/index.md 定位相關頁面，綜合回答，
   若答案有新洞見則提議存回 wiki。
-version: 1.0.0
+  支援 --as ste|diagram|html|video|auto，交由 jdn-kb-view 轉成最易理解的格式。
+version: 1.1.0
 ---
 
 # JDN KB Query — 知識查詢
@@ -47,10 +48,24 @@ version: 1.0.0
 - 若多頁面有矛盾，明確指出而非靜默選一個
 - 若 wiki 中沒有相關資訊，直接說明並建議入庫，不要自行推測
 
-**輸出格式選項**（對齊 §5.2）：
+**輸出格式選項**（對齊 §5.2；v1.1 新增 `--as`）：
 - 預設：Markdown 答案 + 引用連結
 - `--marp`：Marp 簡報格式（適合 presentation）
 - `--apa`：APA 7th 格式參考清單
+- `--as <格式>`：理解格式層，交給 **jdn-kb-view** 處理
+
+| 參數 | 產出 |
+|---|---|
+| `--as ste` | 簡明技術中文（短句、一句一事、術語一致） |
+| `--as diagram` | Mermaid 結構圖＋簡短說明 |
+| `--as html` | 單檔互動網頁（渲染前跑查證閘門） |
+| `--as video` | 解說影片分鏡 JSON＋旁白稿（交給影片 Skill 渲染） |
+| `--as auto` | 由 jdn-kb-view 依內容結構自動選擇，預設往低階選 |
+
+使用 `--as` 時：
+1. 先完成 Phase 1–2（定位頁面、綜合回答、標明來源）。
+2. 把答案與來源清單交給 jdn-kb-view。
+3. view 成品不算新知識，**不觸發 Phase 3 存回**；只在 log 記錄 `view` 配方。
 
 ### Phase 3：提議存回（可選）
 

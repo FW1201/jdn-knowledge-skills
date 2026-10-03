@@ -7,7 +7,7 @@ description: >
   讀取 raw/ 目錄中的新素材，生成或更新 wiki/ 頁面，
   並同步更新 wiki/index.md 與 wiki/log.md。
   產出使用 JDN- 前綴 frontmatter 欄位，符合 JDN LLM Wiki 1.0 規格。
-version: 1.0.0
+version: 1.1.0
 ---
 
 # JDN KB Intake — 知識入庫
@@ -82,6 +82,9 @@ JDN-tags: []              # 自由標籤（Obsidian 搜尋用）
 **頁面正文結構**：
 
 ```markdown
+> **TL;DR**（理解層，簡明技術中文）
+> 3–5 句。每句一件事；結論先講。
+
 ## 摘要
 
 一段話說明此頁面內容。
@@ -106,6 +109,17 @@ JDN-tags: []              # 自由標籤（Obsidian 搜尋用）
 （可選）待確認事項、限制說明
 ```
 
+### Phase 3b：理解層（v1.1 新增）
+
+入庫時同步產生「理解層」，讓頁面不必讀完就能掌握：
+
+1. **TL;DR**：頁首 3–5 句，套用 `jdn-kb-view/references/plain-zh-style.md`（簡明技術中文）。
+2. **結構圖**：`JDN-type` 為 `synthesis`、`concept` 或比較類頁面時，在「核心概念」段落後附一張 Mermaid 圖（規格同 jdn-kb-view 的 `diagram`：節點 ≤ 15、節點文字 ≤ 12 字）。
+3. 其他類型（`source-summary`、`entity`）只加 TL;DR，不強制畫圖。
+4. 理解層只濃縮、不新增：TL;DR 與圖中的每個說法都必須能在正文找到。
+
+> 舊頁面不強制回填；re-ingest 或手動更新時再漸進補上。
+
 ### Phase 4：更新索引與日誌
 
 **更新 wiki/index.md**：
@@ -125,3 +139,4 @@ JDN-tags: []              # 自由標籤（Obsidian 搜尋用）
 3. `JDN-links` 要雙向：A 連結 B，B 也要連結 A
 4. `JDN-updated` 每次修改頁面都必須更新
 5. 入庫後必須執行 Phase 4，確保 index 和 log 同步
+6. 理解層（TL;DR／結構圖）是正文的濃縮，不可出現正文沒有的說法
